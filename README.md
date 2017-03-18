@@ -6,4 +6,4 @@ main.cpp send POST an if response is "O" open the gate and if "C" close the gate
 The code is edited in Atom IDE with PlatformIO Package.
 For install this IDE see: https://github.com/mhognogi/install_on_ubuntu/blob/master/platformio.sh
 
-In PHP server put  
+In PHP server put in DB "O" and "C" from browser client.
