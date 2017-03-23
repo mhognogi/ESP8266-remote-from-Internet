@@ -37,17 +37,17 @@ void loop() {
             if(response == "open"){
                 Serial.println("open gate");
                 digitalWrite(ledPin, LOW);
-                digitalWrite(pinRelOpen, HIGH);
+                digitalWrite(pinRelOpen, LOW);
                 delay(5000);
                 digitalWrite(ledPin, HIGH);
-                digitalWrite(pinRelOpen, LOW);
+                digitalWrite(pinRelOpen, HIGH);
             } else if(response=="close"){
                 Serial.println("close gate");
                 digitalWrite(ledPin, LOW);
-                digitalWrite(pinRelClose, HIGH);
+                digitalWrite(pinRelClose, LOW);
                 delay(5000);
                 digitalWrite(ledPin, HIGH);
-                digitalWrite(pinRelOpen, LOW);
+                digitalWrite(pinRelOpen, HIGH);
             } else {
                 Serial.println("Silence is gold");
             }
