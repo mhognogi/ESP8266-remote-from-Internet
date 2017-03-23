@@ -29,7 +29,7 @@ void setup() {
 void loop() {
     if (WiFi.status () == WL_CONNECTED){
         HTTPClient http;
-        http.begin("http://www.serverphp.com/index.php");
+        http.begin("http://www.phpServer.test");
         http.addHeader("Content-Type", "application/x-www-form-urlencoded");
         int httpCode = http.POST("user=myusername&keyq=hashkey");
         if(httpCode > 199 && httpCode < 300) {
