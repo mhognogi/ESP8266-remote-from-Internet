@@ -7,3 +7,5 @@ The code is edited in Atom IDE with PlatformIO Package.
 For install this IDE see: https://github.com/mhognogi/install_on_ubuntu/blob/master/platformio.sh
 
 In PHP server put in DB "O" and "C" from browser client.
+
+Once per second esp8266 query the server if a change in the DB server. If so, reset data in DB and execute the command.
