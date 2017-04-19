@@ -3,6 +3,10 @@
 #include <ESP8266WiFiMulti.h>
 #include <ESP8266HTTPClient.h>
 #define USE_SERIAL Serial
+    
+/*
+sudo chmod a+rw /dev/ttyUSB0
+*/
 
 ESP8266WiFiMulti WiFiMulti;
 
