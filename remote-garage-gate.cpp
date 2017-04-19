@@ -2,6 +2,9 @@
 #include <ESP8266HTTPClient.h>
 #define Serial Serial
 
+/*
+sudo chmod a+rw /dev/ttyUSB0
+*/
 
 int ledPin = LED_BUILTIN; // GPIO2
 int pinRelOpen = 5; //D1
