@@ -1,5 +1,9 @@
 #include "ESP8266WiFi.h"
 
+/*
+sudo chmod a+rw /dev/ttyUSB0
+*/
+
 void setup() {
   Serial.begin(115200);
 
