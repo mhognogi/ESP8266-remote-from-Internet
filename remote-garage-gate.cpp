@@ -16,8 +16,8 @@ void setup() {
     pinMode(pinRelOpen, OUTPUT);
     pinMode(pinRelClose, OUTPUT);
     digitalWrite(ledPin, HIGH);
-    digitalWrite(pinRelOpen, LOW);
-    digitalWrite(pinRelClose, LOW);
+    digitalWrite(pinRelOpen, HIGH);
+    digitalWrite(pinRelClose, HIGH);
 
     const char* ssid = "wifi name";
     const char* password = "wifi pass";
