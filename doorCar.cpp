@@ -7,7 +7,6 @@ sudo chmod a+rw /dev/ttyUSB0
 const char* ssid     = "***";
 const char* password = "***";
 int lampPin = 2; // D4 led
-//int openPin = 4; //D2
 int openPin = 5; //D1
 int closePin = 0; //D3
 
