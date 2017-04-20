@@ -1,5 +1,9 @@
 #include <ESP8266WiFi.h>
 
+/*
+sudo chmod a+rw /dev/ttyUSB0
+*/
+
 const char* ssid     = "***";
 const char* password = "***";
 int lampPin = 2; // D4 led
