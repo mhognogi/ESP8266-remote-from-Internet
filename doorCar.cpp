@@ -68,7 +68,7 @@ String closeDoor(String statusDoor) {
     digitalWrite(ledPin, HIGH);
     digitalWrite(signalingPin, HIGH);
     digitalWrite(alarmPin, HIGH);
-    Serial.println("Inchide usa");
+    Serial.println("close the door");
   }
 
   return "close";
@@ -85,7 +85,7 @@ String openDoor(String statusDoor) {
     digitalWrite(openPin, HIGH);
     digitalWrite(signalingPin, HIGH);
     digitalWrite(alarmPin, HIGH);
-    Serial.println("Deschide usa");
+    Serial.println("Open the door");
   }
 
   return "open";
