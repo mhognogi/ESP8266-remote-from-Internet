@@ -1,27 +1,31 @@
 #include <ESP8266WiFi.h>
 
-/*
-sudo chmod a+rw /dev/ttyUSB0
-*/
+//sudo chmod a+rw /dev/ttyUSB0
 
 const char* ssid     = "***";
 const char* password = "***";
-int lampPin = 2; // D4 led
+int signalMinim = -80;
+int ledPin = 2; // D4 led
 int openPin = 5; //D1
 int closePin = 0; //D3
+int signalingPin = 14; //D5
+int alarmPin = 13; //D7
 
 void setup() {
   Serial.begin(9600);
   WiFi.begin(ssid, password);
   String statusDoor = "open";
-  int signalMinim = -45;
 
-  pinMode(lampPin, OUTPUT);
+  pinMode(ledPin, OUTPUT);
   pinMode(openPin, OUTPUT);
   pinMode(closePin, OUTPUT);
-  digitalWrite(lampPin, HIGH);
+  pinMode(signalingPin, OUTPUT);
+  pinMode(alarmPin, OUTPUT);
+  digitalWrite(ledPin, HIGH);
   digitalWrite(openPin, HIGH);
   digitalWrite(closePin, HIGH);
+  digitalWrite(signalingPin, HIGH);
+  digitalWrite(alarmPin, HIGH);
 
   while (true) {
     if (WiFi.status() != WL_CONNECTED) {
@@ -47,15 +51,23 @@ void setup() {
 
 String closeDoor(String statusDoor) {
   if (statusDoor == "open") {
-    digitalWrite(lampPin, LOW);
+    digitalWrite(ledPin, LOW);
     digitalWrite(closePin, LOW);
+    digitalWrite(signalingPin, LOW);
+    digitalWrite(alarmPin, LOW);
     delay(500);
-    digitalWrite(lampPin, HIGH);
+    digitalWrite(ledPin, HIGH);
     digitalWrite(closePin, HIGH);
+    digitalWrite(signalingPin, HIGH);
+    digitalWrite(alarmPin, HIGH);
     delay(500);
-    digitalWrite(lampPin, LOW);
+    digitalWrite(ledPin, LOW);
+    digitalWrite(signalingPin, LOW);
+    digitalWrite(alarmPin, LOW);
     delay(500);
-    digitalWrite(lampPin, HIGH);
+    digitalWrite(ledPin, HIGH);
+    digitalWrite(signalingPin, HIGH);
+    digitalWrite(alarmPin, HIGH);
     Serial.println("Inchide usa");
   }
 
@@ -64,11 +76,15 @@ String closeDoor(String statusDoor) {
 
 String openDoor(String statusDoor) {
   if (statusDoor == "close") {
-    digitalWrite(lampPin, LOW);
+    digitalWrite(ledPin, LOW);
     digitalWrite(openPin, LOW);
+    digitalWrite(signalingPin, LOW);
+    digitalWrite(alarmPin, LOW);
     delay(500);
-    digitalWrite(lampPin, HIGH);
+    digitalWrite(ledPin, HIGH);
     digitalWrite(openPin, HIGH);
+    digitalWrite(signalingPin, HIGH);
+    digitalWrite(alarmPin, HIGH);
     Serial.println("Deschide usa");
   }
 
