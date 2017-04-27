@@ -14,7 +14,7 @@ int signalingPin = D5;
 int alarmPin = D7;
 
 String statusDoor = "open";
-int maxTryCon = 7;
+infile:///home/marius/Downloads/CV_2017_ro.docxt maxTryCon = 7;
 
 void setup() {
   Serial.begin(9600);
@@ -86,9 +86,10 @@ void loop() {
   client.println("  <body>");
 
   if (statusDoor == "open") {
-    client.println("  <div class='alert alert-warning' style='font-size: 20px; text-align: center'>The door is <span style='font-size: 25px'>Open</span></div>");
+    String src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAllJREFUSIljYKAxYCRXIy8Pj6CbKl+EqxKHh5YQg+TbX8zfd979dnjL9Y/znrz9co8iC5y0JH2mWf+ep876RhRd7tN/zj+td2Um9+y5W/Lv379/zKQabqMu4brG9t06OdbP/Njk2Rn/MLkIvrNkFFUSPXD7/TaSfMDGxsZ+Mob/hgHHawUGBgaGT//Y/+74KHng5NPvJyX4ueRDxV+7K7B9EWFgYGD49p/1r+kWfjuSXO+kLR3xL5Ph//8shv/vMth/2mjJ+SPLC/Bwip2KF77xPwuiZoqfzGomUixwkfhuzwj187TbfIuOXHu0EVn+w5fvrzKOspf9/w/h+ykxe5BkgboQsyqMffYD52lsaq48erPz3T+OfwwMDAwMn1/ykGTB79+/4eq/svBhVfPr16+f/9l5/zMwMDBIsv5gYCHFgt2v+Ta8Zxa6y8DAwPDgxbuzOBVCw5GFiYGBcXUA/055lo+CpFgEA32PZGetOPV4Drr463yxPyK/XzEzMDAwsIRIfXQjx3AGBgYG8+9/L65gYMCwABmQFETEguLT3EV8LLLsfxmYcVvw8g/Xl867EjNEOBkliuUeRLMz/CU6Uy46dn8SjI3Tgq7bolP799+rYGBgYFCKkFeIEHpoQ6wFyABnMhXhZICnw7//YFmHdIDTB4WKL9M3q4iuY2JiFggWfkqW6/FawPH/B5MIl4DYD0Z2cQ5G4sMfHZCUk8kBeJPpBOOPs5kZKXMEXguUOL9zUWI4AwMDA9Off5RoJxw1LL2vtJdpi3NokGr039+/f6+8/XodWe6iJgAARja/38+HtpsAAAAASUVORK5CYII=";
+    client.println("  <div class='alert alert-warning' style='font-size: 20px; text-align: center'>The door is <span style='font-size: 25px'>Open</span> <img src='" + src + "' style='margin-top: -10px'></div>");
   } else if (statusDoor == "close") {
-    client.println("  <div class='alert alert-success' style='font-size: 20px; text-align: center'>The door is <span style='font-size: 25px'>Close</span></div>");
+    client.println("  <div class='alert alert-success' style='font-size: 20px; text-align: center'>The door is <span style='font-size: 25px'>Close</span> <span class='glyphicon glyphicon-lock'></span></div>");
   } else {
     client.print("    Door is undefined");
   }
