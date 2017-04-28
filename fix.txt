@@ -1,0 +1,8 @@
+//aduino uno
+ls -l /dev/ttyACM*
+sudo usermod -a -G dialout marius
+sudo chmod a+rw /dev/ttyACM0
+
+//wemos esp8266 d1 mini
+sudo chmod a+rw /dev/ttyUSB0
+
