@@ -14,7 +14,6 @@ int signalingPin = D5;
 int alarmPin = D7;
 
 String statusDoor = "open";
-infile:///home/marius/Downloads/CV_2017_ro.docxt maxTryCon = 7;
 
 void setup() {
   Serial.begin(9600);
