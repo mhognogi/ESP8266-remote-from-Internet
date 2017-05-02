@@ -1,6 +1,7 @@
 #include <ESP8266WiFi.h>
 
-//sudo chmod a+rw /dev/ttyUSB0
+//if you work in linux run in terminal: sudo chmod a+rw /dev/ttyUSB0
+//in phone make hotspot with ssid and password
 
 const char* ssid     = "***";
 const char* password = "***";
