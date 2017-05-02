@@ -13,6 +13,7 @@ int closePin = D3;
 int signalingPin = D5;
 int alarmPin = D7;
 
+int maxTryCon = 7;
 String statusDoor = "open";
 
 void setup() {
