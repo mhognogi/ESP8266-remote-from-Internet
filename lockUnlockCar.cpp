@@ -8,11 +8,11 @@ const char* password = "***";
 
 WiFiServer server(80);
 
-int ledPin = D4;
-int openPin = D1;
-int closePin = D3;
-int signalingPin = D5;
-int alarmPin = D7;
+int ledPin = 2;
+int openPin = 5;
+int closePin = 0;
+int signalingPin = 14;
+int alarmPin = 13;
 
 int maxTryCon = 7;
 String statusDoor = "open";
@@ -38,7 +38,7 @@ void setup() {
     Serial.print(".");
     if (tryCon >= maxTryCon && statusDoor == "open") {
       closeDoor();
-      statusDoor == "close";
+      statusDoor = "close";
     }
   }
 
