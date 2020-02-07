@@ -1,0 +1,75 @@
+#include <ESP8266WiFi.h>
+
+const char* ssid = "wifi_name";    //  Your Wi-Fi Name
+const char* password = "wifi_pass";   // Wi-Fi Password
+
+int LED = 2;   // led connected to GPIO2 (D4)
+int RELAY = 5;
+WiFiServer server(80);
+
+void setup(){
+  Serial.begin(115200); //Default Baudrate
+  pinMode(LED, OUTPUT);
+  pinMode(RELAY, OUTPUT);
+  digitalWrite(LED, LOW);
+  digitalWrite(RELAY, HIGH);
+  Serial.print("Connecting to the Newtork");
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED){
+    delay(500);
+    Serial.print(".");
+  }
+  server.begin();  // Starts the Server
+  Serial.println(WiFi.localIP());
+}
+
+void loop(){
+  WiFiClient client = server.available();
+  if (!client){
+    return;
+  }
+  Serial.println("Waiting for new client");
+  while(!client.available()){
+    delay(1);
+  }
+
+  String request = client.readStringUntil('\r');
+  Serial.println(request);
+  client.flush();
+  int value = LOW;
+  if(request.indexOf("/LED=ON") != -1){
+    digitalWrite(LED, LOW); 
+    digitalWrite(RELAY, HIGH); 
+    value = HIGH;
+  }
+  if(request.indexOf("/LED=OFF") != -1){
+    digitalWrite(LED, HIGH);
+    digitalWrite(RELAY, LOW); 
+    value = LOW;
+  }
+  client.println("HTTP/1.1 200 OK");
+  client.println("Content-Type: text/html");
+  client.println("");
+  client.println("<!DOCTYPE HTML>");
+  client.println("<html>");
+  client.println("<head>");
+  client.println("<meta name='viewport' content='width=device-width, initial-scale=1.0'>");
+  client.println("</head>");
+  client.println("</br>");
+  if(value == HIGH){
+    client.print("<span class='bOn'>control led: on</span>");
+  } else {
+    client.print("<span class='bOff'>control led: off</span>");
+  }
+  client.println("<style>");
+  client.println(".bOn{background: #fc0; color: #000; padding: 10px 20px 10px 20px; margin: 12px; font-size: 16px; border: none;}");
+  client.println(".bOff{background: #300; color: #fff; padding: 10px 20px 10px 20px; margin: 12px; font-size: 16px; border: none;}");
+  client.println("</style>");
+  client.println("</br></br>");
+  client.println("<a href=\"/LED=ON\"\"><button class='bOn'>on</button></a>");
+  client.println("<a href=\"/LED=OFF\"\"><button class='bOff'>off</button></a>");
+  client.println("</html>");
+  delay(1);
+  Serial.println("Client disonnected");
+  Serial.println("");
+}
